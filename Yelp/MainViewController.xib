@@ -28,7 +28,7 @@
                 <constraint firstAttribute="trailing" secondItem="oUX-iF-Wk7" secondAttribute="trailing" id="KF6-xh-2z6"/>
                 <constraint firstItem="oUX-iF-Wk7" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Vi3-Bc-Z4T"/>
             </constraints>
-            <point key="canvasLocation" x="-164" y="38"/>
+            <point key="canvasLocation" x="-177" y="-79"/>
         </view>
     </objects>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (nonatomic, strong) NSArray* categories;
 @property (nonatomic,strong) NSMutableSet* selectedCategories;
+@property (nonatomic, strong) NSMutableArray* sectionTitles;
 -(void) initCategories;
 @end
 
@@ -36,13 +37,28 @@
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Apply" style:UIBarButtonItemStylePlain target:self action:@selector(onApplyButton)];
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
-    
+    self.sectionTitles = [NSMutableArray arrayWithObjects:@"Sort By", @"Category", nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"SwitchCell" bundle:nil] forCellReuseIdentifier:@"SwitchCell"];
+
 }
 
+
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+//    return self.sectionTitles.count;
+//}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    if (section == 0) {
+//        return 1;
+//    }
     return self.categories.count;
 }
+
+//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+//{
+//    // set the section title to the matching letter
+//    return [self.sectionTitles objectAtIndex:section];
+//}
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
