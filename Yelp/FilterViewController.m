@@ -8,6 +8,7 @@
 
 #import "FilterViewController.h"
 #import "SwitchCell.h"
+#import "Sortby.h"
 
 @interface FilterViewController ()<UITableViewDataSource, UITableViewDelegate, SwitchCellDelegate>
 
@@ -17,6 +18,9 @@
 @property (nonatomic,strong) NSMutableSet* selectedCategories;
 @property (nonatomic, strong) NSMutableArray* sectionTitles;
 -(void) initCategories;
+
+@property (nonatomic, strong) Sortby* sortby;
+@property (nonatomic, assign) NSInteger selectedSortby;
 @end
 
 @implementation FilterViewController
@@ -26,6 +30,8 @@
     if (self) {
         self.selectedCategories = [NSMutableSet set];
         [self initCategories];
+        self.sortby = [[Sortby alloc]init];
+        self.selectedSortby = 0;
     }
     return self;
 }
@@ -39,29 +45,44 @@
     self.tableView.delegate = self;
     self.sectionTitles = [NSMutableArray arrayWithObjects:@"Sort By", @"Category", nil];
     [self.tableView registerNib:[UINib nibWithNibName:@"SwitchCell" bundle:nil] forCellReuseIdentifier:@"SwitchCell"];
-
+    [self.tableView registerNib:[UINib nibWithNibName:@"UITableViewCell" bundle:nil] forCellReuseIdentifier:@"UITableViewCell"];
 }
 
 
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-//    return self.sectionTitles.count;
-//}
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return self.sectionTitles.count;
+}
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-//    if (section == 0) {
-//        return 1;
-//    }
+    if (section == 0) {
+        return self.sortby.values.count;
+    }
     return self.categories.count;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-//{
-//    // set the section title to the matching letter
-//    return [self.sectionTitles objectAtIndex:section];
-//}
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    // set the section title to the matching letter
+    return [self.sectionTitles objectAtIndex:section];
+}
 
 - (UITableViewCell*) tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+    if (indexPath.section == 0) {
+        static NSString *simpleTableIdentifier = @"SimpleTableItem";
+        
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+        
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+        }
+        cell.textLabel.text = self.sortby.values[indexPath.row];
+        cell.selectionStyle = UITableViewCellSelectionStyleDefault;
+        if (self.selectedSortby == indexPath.row) {
+            [cell setHighlighted:YES];
+        }
+        return cell;
+    }
+    else{
     SwitchCell* cell = [tableView dequeueReusableCellWithIdentifier:@"SwitchCell"];
     cell.delegate = self;
     //update the state with respect to the switch delegated state
@@ -69,7 +90,14 @@
     
     cell.titleLabel.text = self.categories[indexPath.row][@"name"];
     return cell;
-    
+    }
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0) {
+        self.selectedSortby = indexPath.row;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -102,6 +130,7 @@
         NSString* categoryFilter = [names componentsJoinedByString:@","];
         [filters setValue:categoryFilter forKey:@"category_filter"];
     }
+    [filters setValue:@(self.selectedSortby) forKey:@"sort"];
     return filters;
 }
 

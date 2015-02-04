@@ -22,6 +22,7 @@
 		42FD6C6618DC286B000BF2B9 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42FD6C4E18DC286B000BF2B9 /* UIKit.framework */; };
 		42FD6C6E18DC286B000BF2B9 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 42FD6C6C18DC286B000BF2B9 /* InfoPlist.strings */; };
 		42FD6C7018DC286B000BF2B9 /* YelpTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 42FD6C6F18DC286B000BF2B9 /* YelpTests.m */; };
+		5C17E5231A81E4C800D81217 /* Sortby.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C17E5221A81E4C800D81217 /* Sortby.m */; };
 		5C6A548A1A7E0D69000565E2 /* FilterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A54881A7E0D69000565E2 /* FilterViewController.m */; };
 		5C6A548B1A7E0D69000565E2 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5C6A54891A7E0D69000565E2 /* FilterViewController.xib */; };
 		5C6A548F1A7E9ED2000565E2 /* SwitchCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C6A548D1A7E9ED2000565E2 /* SwitchCell.m */; };
@@ -64,6 +65,8 @@
 		42FD6C6B18DC286B000BF2B9 /* YelpTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "YelpTests-Info.plist"; sourceTree = "<group>"; };
 		42FD6C6D18DC286B000BF2B9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		42FD6C6F18DC286B000BF2B9 /* YelpTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = YelpTests.m; sourceTree = "<group>"; };
+		5C17E5211A81E4C800D81217 /* Sortby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Sortby.h; sourceTree = "<group>"; };
+		5C17E5221A81E4C800D81217 /* Sortby.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Sortby.m; sourceTree = "<group>"; };
 		5C6A54871A7E0D69000565E2 /* FilterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilterViewController.h; sourceTree = "<group>"; };
 		5C6A54881A7E0D69000565E2 /* FilterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilterViewController.m; sourceTree = "<group>"; };
 		5C6A54891A7E0D69000565E2 /* FilterViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
@@ -207,6 +210,8 @@
 			children = (
 				5C9E79DC1A7C08D500794995 /* Business.h */,
 				5C9E79DD1A7C08D500794995 /* Business.m */,
+				5C17E5211A81E4C800D81217 /* Sortby.h */,
+				5C17E5221A81E4C800D81217 /* Sortby.m */,
 			);
 			name = models;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 				420474F618DC299500E88E07 /* YelpClient.m in Sources */,
 				5C9E79E31A7C152600794995 /* BusinessCell.m in Sources */,
 				5C6A548A1A7E0D69000565E2 /* FilterViewController.m in Sources */,
+				5C17E5231A81E4C800D81217 /* Sortby.m in Sources */,
 				5C9E79DE1A7C08D500794995 /* Business.m in Sources */,
 				420474FB18DC2B2100E88E07 /* MainViewController.m in Sources */,
 			);
